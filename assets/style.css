@@ -332,12 +332,12 @@ main {
    ================================================================ */
 
 /* Текст лишається вузьким,
-   а wide-графік виступає вправо приблизно на 10rem */
+   а wide-графік виступає вправо приблизно на 17rem */
 
 .work.wide .note > .chart,
 .work.wide .note > .chart-row,
 .chart.wide {
-  width: calc(100% + 10rem);
+  width: calc(100% + 17rem);
   max-width: none;
 }
 
