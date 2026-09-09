@@ -331,19 +331,19 @@ main {
 
 /* 1. Економіка Конохи */
 .work.wide:nth-of-type(1) .note > .chart {
-  width: calc(100% + 19rem);
+  width: calc(100% + 22rem);
   max-width: none;
 }
 
 /* 2. Цунаде: ціна життя */
 .work.wide:nth-of-type(2) .note > .chart {
-  width: calc(100% + 10rem);
+  width: calc(100% + 11rem);
   max-width: none;
 }
 
 /* 3. Генін рівня Каге */
 .work.wide:nth-of-type(3) .note > .chart {
-  width: calc(100% + 8rem);
+  width: calc(100% + 6rem);
   max-width: none;
 }
 
