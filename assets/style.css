@@ -34,15 +34,11 @@ body {
 
 .layout {
   display: grid;
-
-  /* Ліва панель + основний контент */
   grid-template-columns: 13rem minmax(0, 1fr);
-
   gap: 2rem;
 
-  /* Оптимальна ширина для тексту та Tableau */
   width: 100%;
-  max-width: 78rem;
+  max-width: 82rem;
 
   margin: 0 auto;
   padding: 0 1.5rem;
@@ -260,9 +256,7 @@ main {
   width: 100%;
 }
 
-/* Текст ширший, ніж в оригінальному шаблоні.
-   48rem приблизно відповідає 750-770 px. */
-
+/* Текст тримаємо читабельним */
 .note > p,
 .note > ul,
 .note > ol,
@@ -272,7 +266,7 @@ main {
 .note > h4,
 .note > table {
   width: 100%;
-  max-width: 48rem;
+  max-width: 42rem;
 }
 
 .note b,
@@ -299,7 +293,7 @@ main {
    ================================================================ */
 
 .note.swap {
-  max-width: 48rem;
+  max-width: 42rem;
   margin-top: -0.9rem;
   padding-left: 0.8rem;
   border-left: 2px solid var(--line);
@@ -327,7 +321,7 @@ main {
 
 .viz {
   width: 100%;
-  max-width: 100%;
+  max-width: none;
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
 }
@@ -337,14 +331,14 @@ main {
    ШИРОКІ DASHBOARD
    ================================================================ */
 
-/* Tableau займає всю ширину основної колонки,
-   але більше не виходить за межі сторінки. */
+/* Текст лишається вузьким,
+   а wide-графік виступає вправо приблизно на 10rem */
 
 .work.wide .note > .chart,
 .work.wide .note > .chart-row,
 .chart.wide {
-  width: 100%;
-  max-width: 100%;
+  width: calc(100% + 10rem);
+  max-width: none;
 }
 
 
@@ -374,12 +368,12 @@ main pre:has(> code[class*="language-vega-lite"]) {
 .chart {
   margin: 0 0 1.4rem;
   width: 100%;
-  max-width: 100%;
+  max-width: none;
 }
 
 .chart .viz {
   width: 100%;
-  max-width: 100%;
+  max-width: none;
 }
 
 
@@ -389,10 +383,8 @@ main pre:has(> code[class*="language-vega-lite"]) {
 
 .viz-frame {
   display: block;
-
   width: 100% !important;
-  max-width: 100% !important;
-
+  max-width: none !important;
   min-height: 400px;
 
   border: 1px solid var(--line);
@@ -514,7 +506,7 @@ main pre:has(> code[class*="language-vega-lite"]) {
    СЕРЕДНІ ЕКРАНИ
    ================================================================ */
 
-@media (max-width: 1100px) {
+@media (max-width: 1200px) {
 
   .layout {
     grid-template-columns: 11rem minmax(0, 1fr);
@@ -531,7 +523,13 @@ main pre:has(> code[class*="language-vega-lite"]) {
   .note > h3,
   .note > h4,
   .note > table {
-    max-width: 100%;
+    max-width: 38rem;
+  }
+
+  .work.wide .note > .chart,
+  .work.wide .note > .chart-row,
+  .chart.wide {
+    width: calc(100% + 4rem);
   }
 
   .side-works a {
