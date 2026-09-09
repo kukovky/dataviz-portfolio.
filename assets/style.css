@@ -8,7 +8,6 @@
   --bg:       #ffffff;
   --bg-soft:  #fbfcfd;
   --warn:     #f15b43;
-  --bleed:    0rem;
 }
 
 * {
@@ -256,7 +255,6 @@ main {
   width: 100%;
 }
 
-/* Текст тримаємо читабельним */
 .note > p,
 .note > ul,
 .note > ol,
@@ -289,7 +287,7 @@ main {
 
 
 /* ================================================================
-   ПРИКЛАД / ДОДАТКОВА НОТАТКА
+   ДОДАТКОВА НОТАТКА
    ================================================================ */
 
 .note.swap {
@@ -316,7 +314,7 @@ main {
 
 
 /* ================================================================
-   КОНТЕЙНЕР ВІЗУАЛІЗАЦІЇ
+   ВІЗУАЛІЗАЦІЇ
    ================================================================ */
 
 .viz {
@@ -328,16 +326,24 @@ main {
 
 
 /* ================================================================
-   ШИРОКІ DASHBOARD
+   ІНДИВІДУАЛЬНА ШИРИНА ДЛЯ 3 DASHBOARD
    ================================================================ */
 
-/* Текст лишається вузьким,
-   а wide-графік виступає вправо приблизно на 17rem */
+/* 1. Економіка Конохи */
+.work.wide:nth-of-type(1) .note > .chart {
+  width: calc(100% + 19rem);
+  max-width: none;
+}
 
-.work.wide .note > .chart,
-.work.wide .note > .chart-row,
-.chart.wide {
-  width: calc(100% + 17rem);
+/* 2. Цунаде: ціна життя */
+.work.wide:nth-of-type(2) .note > .chart {
+  width: calc(100% + 10rem);
+  max-width: none;
+}
+
+/* 3. Генін рівня Каге */
+.work.wide:nth-of-type(3) .note > .chart {
+  width: calc(100% + 8rem);
   max-width: none;
 }
 
@@ -526,9 +532,15 @@ main pre:has(> code[class*="language-vega-lite"]) {
     max-width: 38rem;
   }
 
-  .work.wide .note > .chart,
-  .work.wide .note > .chart-row,
-  .chart.wide {
+  .work.wide:nth-of-type(1) .note > .chart {
+    width: calc(100% + 8rem);
+  }
+
+  .work.wide:nth-of-type(2) .note > .chart {
+    width: calc(100% + 5rem);
+  }
+
+  .work.wide:nth-of-type(3) .note > .chart {
     width: calc(100% + 4rem);
   }
 
@@ -611,9 +623,9 @@ main pre:has(> code[class*="language-vega-lite"]) {
     max-width: 100%;
   }
 
-  .work.wide .note > .chart,
-  .work.wide .note > .chart-row,
-  .chart.wide {
+  .work.wide:nth-of-type(1) .note > .chart,
+  .work.wide:nth-of-type(2) .note > .chart,
+  .work.wide:nth-of-type(3) .note > .chart {
     width: 100%;
   }
 
