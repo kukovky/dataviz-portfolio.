@@ -29,19 +29,23 @@ body {
 
 
 /* ================================================================
-   РОЗКЛАДКА: БІЧНА ПАНЕЛЬ + ВМІСТ
+   ОСНОВНА РОЗКЛАДКА
    ================================================================ */
 
 .layout {
   display: grid;
+
+  /* Ліва панель + основний контент */
   grid-template-columns: 13rem minmax(0, 1fr);
+
   gap: 2rem;
 
+  /* Оптимальна ширина для тексту та Tableau */
   width: 100%;
-  max-width: none;
+  max-width: 78rem;
 
-  margin: 0;
-  padding: 0 2rem;
+  margin: 0 auto;
+  padding: 0 1.5rem;
 }
 
 .content {
@@ -256,7 +260,8 @@ main {
   width: 100%;
 }
 
-/* Сам текст лишається вузьким для зручного читання */
+/* Текст ширший, ніж в оригінальному шаблоні.
+   48rem приблизно відповідає 750-770 px. */
 
 .note > p,
 .note > ul,
@@ -266,7 +271,8 @@ main {
 .note > h3,
 .note > h4,
 .note > table {
-  max-width: 34rem;
+  width: 100%;
+  max-width: 48rem;
 }
 
 .note b,
@@ -289,11 +295,11 @@ main {
 
 
 /* ================================================================
-   ПОЗНАЧКА ПРИКЛАДУ
+   ПРИКЛАД / ДОДАТКОВА НОТАТКА
    ================================================================ */
 
 .note.swap {
-  max-width: 34rem;
+  max-width: 48rem;
   margin-top: -0.9rem;
   padding-left: 0.8rem;
   border-left: 2px solid var(--line);
@@ -316,12 +322,12 @@ main {
 
 
 /* ================================================================
-   TABLEAU / VEGA КОНТЕЙНЕР
+   КОНТЕЙНЕР ВІЗУАЛІЗАЦІЇ
    ================================================================ */
 
 .viz {
   width: 100%;
-  max-width: none;
+  max-width: 100%;
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
 }
@@ -331,11 +337,14 @@ main {
    ШИРОКІ DASHBOARD
    ================================================================ */
 
+/* Tableau займає всю ширину основної колонки,
+   але більше не виходить за межі сторінки. */
+
 .work.wide .note > .chart,
 .work.wide .note > .chart-row,
 .chart.wide {
   width: 100%;
-  max-width: none;
+  max-width: 100%;
 }
 
 
@@ -365,11 +374,12 @@ main pre:has(> code[class*="language-vega-lite"]) {
 .chart {
   margin: 0 0 1.4rem;
   width: 100%;
+  max-width: 100%;
 }
 
 .chart .viz {
   width: 100%;
-  max-width: none;
+  max-width: 100%;
 }
 
 
@@ -381,7 +391,7 @@ main pre:has(> code[class*="language-vega-lite"]) {
   display: block;
 
   width: 100% !important;
-  max-width: none !important;
+  max-width: 100% !important;
 
   min-height: 400px;
 
@@ -504,12 +514,24 @@ main pre:has(> code[class*="language-vega-lite"]) {
    СЕРЕДНІ ЕКРАНИ
    ================================================================ */
 
-@media (max-width: 1200px) {
+@media (max-width: 1100px) {
 
   .layout {
     grid-template-columns: 11rem minmax(0, 1fr);
     gap: 1.5rem;
+    max-width: 100%;
     padding: 0 1.25rem;
+  }
+
+  .note > p,
+  .note > ul,
+  .note > ol,
+  .note > blockquote,
+  .note > h2,
+  .note > h3,
+  .note > h4,
+  .note > table {
+    max-width: 100%;
   }
 
   .side-works a {
@@ -578,6 +600,17 @@ main pre:has(> code[class*="language-vega-lite"]) {
 
   .work {
     padding: 2rem 0;
+  }
+
+  .note > p,
+  .note > ul,
+  .note > ol,
+  .note > blockquote,
+  .note > h2,
+  .note > h3,
+  .note > h4,
+  .note > table {
+    max-width: 100%;
   }
 
   .work.wide .note > .chart,
