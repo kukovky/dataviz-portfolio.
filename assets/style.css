@@ -1,5 +1,4 @@
-/* Оформлення сторінки портфоліо. Правити не обов'язково —
-   але якщо хочете свої кольори, міняйте змінні в :root нижче. */
+/* Оформлення сторінки портфоліо */
 
 :root {
   --ink:      #1f2a33;
@@ -9,17 +8,19 @@
   --bg:       #ffffff;
   --bg-soft:  #fbfcfd;
   --warn:     #f15b43;
-  --bleed:    0rem;
+
+  /* Додатковий виступ більше не потрібен,
+     оскільки основний контейнер зроблено ширшим */
+  --bleed: 0rem;
 }
 
-/* Пороги рахуються так: розкладка впирається в 66rem, тож блок
-   виступає за неї безпечно, поки ширина вікна ≥ 1008px + 2 × виступ. */
-@media (min-width: 1200px) { :root { --bleed: 5rem; } }
-@media (min-width: 1400px) { :root { --bleed: 9rem; } }
+* {
+  box-sizing: border-box;
+}
 
-* { box-sizing: border-box; }
-
-html { -webkit-text-size-adjust: 100%; }
+html {
+  -webkit-text-size-adjust: 100%;
+}
 
 body {
   margin: 0;
@@ -29,18 +30,35 @@ body {
         "Helvetica Neue", Arial, sans-serif;
 }
 
-/* ── розкладка: бічна панель + вміст ───────────────────────────── */
+
+/* ================================================================
+   РОЗКЛАДКА: БІЧНА ПАНЕЛЬ + ВМІСТ
+   ================================================================ */
 
 .layout {
   display: grid;
+
+  /* Ліва панель 15rem, решта простору для контенту */
   grid-template-columns: 15rem minmax(0, 1fr);
+
   gap: 2rem;
-  max-width: 66rem;
+
+  /* Було 66rem.
+     Збільшено для широких Tableau Dashboard */
+  max-width: 90rem;
+
   margin: 0 auto;
   padding: 0 1.5rem;
 }
 
-.content { min-width: 0; }
+.content {
+  min-width: 0;
+}
+
+
+/* ================================================================
+   БІЧНА ПАНЕЛЬ
+   ================================================================ */
 
 .side {
   min-width: 0;
@@ -78,7 +96,9 @@ body {
   margin-left: -0.8rem;
 }
 
-.side-nav a:hover { color: var(--accent); }
+.side-nav a:hover {
+  color: var(--accent);
+}
 
 .side-nav a.here {
   color: var(--accent);
@@ -86,9 +106,10 @@ body {
   border-left-color: var(--accent);
 }
 
-.side-works { margin-top: 1.2rem; }
+.side-works {
+  margin-top: 1.2rem;
+}
 
-/* Рамка-роздільник потрібна тільки тоді, коли вище є список сторінок. */
 .side-nav + .side-works {
   padding-top: 1.2rem;
   border-top: 1px solid var(--line);
@@ -105,10 +126,19 @@ body {
   border-left: 2px solid transparent;
 }
 
-.side-works a:hover { color: var(--accent); }
-.side-works a.here { color: var(--accent); border-left-color: var(--accent); }
+.side-works a:hover {
+  color: var(--accent);
+}
 
-/* ── шапка ─────────────────────────────────────────────────────── */
+.side-works a.here {
+  color: var(--accent);
+  border-left-color: var(--accent);
+}
+
+
+/* ================================================================
+   ШАПКА
+   ================================================================ */
 
 .page-head {
   padding: 3.5rem 0 2.5rem;
@@ -129,9 +159,14 @@ body {
   font-size: 1.05rem;
 }
 
-/* ── роботи ────────────────────────────────────────────────────── */
 
-main { padding: 0; }
+/* ================================================================
+   РОБОТИ
+   ================================================================ */
+
+main {
+  padding: 0;
+}
 
 .work {
   scroll-margin-top: 1.5rem;
@@ -139,9 +174,13 @@ main { padding: 0; }
   border-bottom: 1px solid var(--line);
 }
 
-.work:last-of-type { border-bottom: 0; }
+.work:last-of-type {
+  border-bottom: 0;
+}
 
-/* Заголовок роботи — він же кнопка «згорнути». */
+
+/* Заголовок роботи */
+
 .work > summary {
   list-style: none;
   cursor: pointer;
@@ -152,7 +191,9 @@ main { padding: 0; }
   user-select: none;
 }
 
-.work > summary::-webkit-details-marker { display: none; }
+.work > summary::-webkit-details-marker {
+  display: none;
+}
 
 .work > summary::before {
   content: "";
@@ -165,8 +206,13 @@ main { padding: 0; }
   transition: transform 0.15s;
 }
 
-.work[open] > summary::before { transform: rotate(45deg); }
-.work > summary:hover::before { border-color: var(--accent); }
+.work[open] > summary::before {
+  transform: rotate(45deg);
+}
+
+.work > summary:hover::before {
+  border-color: var(--accent);
+}
 
 .work-title {
   font-size: 1.4rem;
@@ -175,9 +221,15 @@ main { padding: 0; }
   color: var(--accent);
 }
 
-.work-body { padding-top: 0.6rem; }
+.work-body {
+  padding-top: 0.6rem;
+}
 
-/* Кнопка «згорнути всі» в бічній панелі. */
+
+/* ================================================================
+   КНОПКА "ЗГОРНУТИ ВСІ"
+   ================================================================ */
+
 .side-fold {
   margin-top: 1.2rem;
   padding: 0;
@@ -190,25 +242,57 @@ main { padding: 0; }
   text-align: left;
 }
 
-.side-fold:hover { color: var(--accent); }
+.side-fold:hover {
+  color: var(--accent);
+}
 
-/* Міру тримає текст, а не блок: рядок довший за 34rem читати важче.
-   Графік, поставлений у тексті роботи, цієї межі не має — він займає
-   всю ширину колонки. */
+
+/* ================================================================
+   ТЕКСТ РОБОТИ
+   ================================================================ */
+
 .note {
   margin: 0 0 1.4rem;
   color: var(--ink-soft);
 }
 
-.note > p, .note > ul, .note > ol, .note > blockquote,
-.note > h2, .note > h3, .note > h4, .note > table { max-width: 34rem; }
+/* Текст залишається вузьким для комфортного читання.
+   Tableau при цьому може використовувати всю ширину сторінки. */
 
-.note b, .note strong { color: var(--ink); font-weight: 600; }
-.note p { margin: 0 0 0.7rem; }
-.note p:last-child { margin-bottom: 0; }
-.note + .note { margin-top: 1.2rem; }
+.note > p,
+.note > ul,
+.note > ol,
+.note > blockquote,
+.note > h2,
+.note > h3,
+.note > h4,
+.note > table {
+  max-width: 34rem;
+}
 
-/* Рядок «це приклад» — видимий, але не на місці опису роботи. */
+.note b,
+.note strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.note p {
+  margin: 0 0 0.7rem;
+}
+
+.note p:last-child {
+  margin-bottom: 0;
+}
+
+.note + .note {
+  margin-top: 1.2rem;
+}
+
+
+/* ================================================================
+   ПРИКЛАД
+   ================================================================ */
+
 .note.swap {
   max-width: 34rem;
   margin-top: -0.9rem;
@@ -217,7 +301,6 @@ main { padding: 0; }
   font-size: 0.85rem;
 }
 
-/* Позначка прикладу. Приберете приклад — приберете і її. */
 .tag {
   display: inline-block;
   padding: 0.15em 0.5em;
@@ -232,54 +315,84 @@ main { padding: 0; }
   vertical-align: middle;
 }
 
-/* Контейнер графіка. Широкий графік прокручується всередині себе,
-   а не розтягує сторінку. */
+
+/* ================================================================
+   КОНТЕЙНЕР ВІЗУАЛІЗАЦІЇ
+   ================================================================ */
+
 .viz {
+  width: 100%;
   max-width: 100%;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
 }
 
-/* Робота на всю ширину: <section class="work wide">.
-   Дашборди Tableau ширші за текстову колонку, і в ній їх обрізає. */
-/* Ширший блок для дашбордів: вилазить за колонку тексту рівно на
-   --bleed з кожного боку. Класичний трюк «на всю ширину вікна» тут
-   не працює: колонка стоїть праворуч від панелі, тобто не по центру
-   вікна, і центрування зсуває блок за правий край. */
+
+/* ================================================================
+   ШИРОКІ DASHBOARD
+   ================================================================ */
+
+/* Сторінка вже має достатню ширину.
+   Тому wide використовує всю доступну ширину контенту,
+   але не вилазить за правий край. */
+
 .work.wide .note > .chart,
 .work.wide .note > .chart-row,
 .chart.wide {
-  /* Виступ тільки вправо. Ліворуч стоїть липка бічна панель, і
-     симетричний виступ наїжджав би на неї. */
-  width: calc(100% + var(--bleed));
-  max-width: none;              /* інакше .viz{max-width:100%} тримає в колонці */
+  width: 100%;
+  max-width: none;
 }
 
-@media (max-width: 720px) {
-  .work.wide .note > .chart,
-  .work.wide .note > .chart-row,
-  .chart.wide { width: 100%; }
+
+/* Tableau iframe */
+
+.chart .viz {
+  width: 100%;
 }
 
-/* vega-embed робить свій контейнер inline-block, і той обгортається
-   під ширину графіка, вилазячи з колонки. Повертаємо блок. */
-.viz.vega-embed { display: block; }
+.viz-frame {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-height: 400px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--bg-soft);
+}
 
-/* ── графік, поставлений у тексті роботи ───────────────────────── */
 
-/* Рядок ![Підпис](specs/файл.json) браузер спершу читає як картинку.
-   Ховаємо її, поки embed.js не поставив на це місце графік: інакше
-   на секунду блимає значок «зображення не завантажилось». Так само
-   з блоком ```vega-lite```: це специфікація, а не текст для читача. */
+/* ================================================================
+   VEGA
+   ================================================================ */
+
+.viz.vega-embed {
+  display: block;
+}
+
+
+/* ================================================================
+   ГРАФІК У ТЕКСТІ РОБОТИ
+   ================================================================ */
+
 main img[src$=".json"],
 main img[src*="public.tableau.com"],
-main [class*="language-vega-lite"] { display: none; }
-main pre:has(> code[class*="language-vega-lite"]) { display: none; }
+main [class*="language-vega-lite"] {
+  display: none;
+}
 
-.chart { margin: 0 0 1.4rem; }
-.chart .viz { width: 100%; }
+main pre:has(> code[class*="language-vega-lite"]) {
+  display: none;
+}
 
-/* Скріншот, поставлений у тексті роботи, як звичайна картинка. */
+.chart {
+  margin: 0 0 1.4rem;
+}
+
+
+/* ================================================================
+   ЗВИЧАЙНІ ЗОБРАЖЕННЯ
+   ================================================================ */
+
 .note img {
   display: block;
   max-width: 100%;
@@ -294,17 +407,17 @@ main pre:has(> code[class*="language-vega-lite"]) { display: none; }
   color: var(--ink-soft);
 }
 
-/* Два графіки в одному ряду. Ставте їх поруч тоді, коли читач має
-   їх порівняти: око порівнює те, що бачить разом.
-   На вузькому екрані ряд розпадається на два графіки один під одним. */
+
+/* ================================================================
+   ДВА ГРАФІКИ В ОДНОМУ РЯДУ
+   ================================================================ */
+
 .chart-row {
   display: flex;
   gap: 1.4rem;
   margin: 0 0 1.4rem;
 }
 
-/* Колонка з підписом унизу: графіки в ряду різної висоти, а підписи
-   мають стояти на одному рівні. */
 .chart-row .chart {
   display: flex;
   flex-direction: column;
@@ -313,32 +426,33 @@ main pre:has(> code[class*="language-vega-lite"]) { display: none; }
   margin: 0;
 }
 
-.chart-row .chart figcaption { margin-top: auto; padding-top: 0.5rem; }
-
-@media (max-width: 720px) {
-  .chart-row { display: block; }
-  .chart-row .chart { margin: 0 0 1.4rem; }
-  .chart-row .chart:last-child { margin-bottom: 0; }
+.chart-row .chart figcaption {
+  margin-top: auto;
+  padding-top: 0.5rem;
 }
 
-.viz-frame {
-  display: block;
-  width: 100%;
-  min-height: 400px;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  background: var(--bg-soft);
-}
+
+/* ================================================================
+   ПОСИЛАННЯ НА TABLEAU
+   ================================================================ */
 
 .viz-link {
   margin: 0.6rem 0 0;
   font-size: 0.85rem;
 }
 
-.viz-link a { color: var(--ink-soft); }
-.viz-link a:hover { color: var(--accent); }
+.viz-link a {
+  color: var(--ink-soft);
+}
 
-/* ── підказки замість графіка ──────────────────────────────────── */
+.viz-link a:hover {
+  color: var(--accent);
+}
+
+
+/* ================================================================
+   ПОВІДОМЛЕННЯ ПРО ПОМИЛКИ
+   ================================================================ */
 
 .viz-msg {
   padding: 2rem 1.5rem;
@@ -347,13 +461,29 @@ main pre:has(> code[class*="language-vega-lite"]) { display: none; }
   font-size: 0.95rem;
 }
 
-.viz-msg b { display: block; color: var(--accent); margin-bottom: 0.35rem; }
-.viz-msg span { color: var(--ink-soft); }
+.viz-msg b {
+  display: block;
+  color: var(--accent);
+  margin-bottom: 0.35rem;
+}
 
-.viz-msg--warn { border: 1px solid var(--warn); border-left-width: 4px; }
-.viz-msg--warn b { color: var(--warn); }
+.viz-msg span {
+  color: var(--ink-soft);
+}
 
-/* ── підвал ────────────────────────────────────────────────────── */
+.viz-msg--warn {
+  border: 1px solid var(--warn);
+  border-left-width: 4px;
+}
+
+.viz-msg--warn b {
+  color: var(--warn);
+}
+
+
+/* ================================================================
+   ПІДВАЛ
+   ================================================================ */
 
 .page-foot {
   padding: 2.5rem 0 4rem;
@@ -362,24 +492,81 @@ main pre:has(> code[class*="language-vega-lite"]) { display: none; }
   font-size: 0.9rem;
 }
 
-.page-foot p { margin: 0; }
+.page-foot p {
+  margin: 0;
+}
+
+
+/* ================================================================
+   МОБІЛЬНА ВЕРСІЯ
+   ================================================================ */
 
 @media (max-width: 720px) {
-  /* minmax(0,…), не 1fr: інакше колонка розтягується під найширший
-     вміст — вбудований графік — і сторінка їде вбік. */
-  .layout { grid-template-columns: minmax(0, 1fr); gap: 0; }
+
+  .layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+    max-width: 100%;
+    padding: 0 1rem;
+  }
+
   .side {
     position: static;
     max-height: none;
     padding: 2rem 0 1rem;
     border-bottom: 1px solid var(--line);
   }
-  .side-role { margin-bottom: 1rem; }
-  .side-nav { display: flex; gap: 1.2rem; }
-  .side-nav a { border-left: 0; padding-left: 0; margin-left: 0; }
-  .side-nav a.here { border-bottom: 2px solid var(--accent); }
-  .side-works { display: none; }
-  .page-head { padding-top: 2rem; }
-  .page-head h1 { font-size: 1.9rem; }
-  .work { padding: 2rem 0; }
+
+  .side-role {
+    margin-bottom: 1rem;
+  }
+
+  .side-nav {
+    display: flex;
+    gap: 1.2rem;
+  }
+
+  .side-nav a {
+    border-left: 0;
+    padding-left: 0;
+    margin-left: 0;
+  }
+
+  .side-nav a.here {
+    border-bottom: 2px solid var(--accent);
+  }
+
+  .side-works {
+    display: none;
+  }
+
+  .page-head {
+    padding-top: 2rem;
+  }
+
+  .page-head h1 {
+    font-size: 1.9rem;
+  }
+
+  .work {
+    padding: 2rem 0;
+  }
+
+  .work.wide .note > .chart,
+  .work.wide .note > .chart-row,
+  .chart.wide {
+    width: 100%;
+  }
+
+  .chart-row {
+    display: block;
+  }
+
+  .chart-row .chart {
+    margin: 0 0 1.4rem;
+  }
+
+  .chart-row .chart:last-child {
+    margin-bottom: 0;
+  }
 }
