@@ -264,7 +264,7 @@ main {
 .note > h4,
 .note > table {
   width: 100%;
-  max-width: 42rem;
+  max-width: 50rem;
 }
 
 .note b,
@@ -291,7 +291,7 @@ main {
    ================================================================ */
 
 .note.swap {
-  max-width: 42rem;
+  max-width: 50rem;
   margin-top: -0.9rem;
   padding-left: 0.8rem;
   border-left: 2px solid var(--line);
@@ -343,7 +343,7 @@ main {
 
 /* 3. Генін рівня Каге */
 .work.wide:nth-of-type(3) .note > .chart {
-  width: calc(100% + 4rem);
+  width: calc(100% + 3rem);
   max-width: none;
 }
 
