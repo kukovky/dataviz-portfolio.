@@ -330,10 +330,10 @@ main {
    ІНДИВІДУАЛЬНА ШИРИНА ДЛЯ 3 DASHBOARD
    ================================================================ */
 
-/* 1. Економіка Конохи */
 .work.wide:nth-of-type(1) .note > .chart {
-  width: calc(100% + 23rem);
+  width: calc(100% + 22rem);
   max-width: none;
+  margin-left: -5rem;
 }
 
 /* 2. Цунаде: ціна життя */
