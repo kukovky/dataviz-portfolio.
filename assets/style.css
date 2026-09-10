@@ -255,6 +255,7 @@ main {
   width: 100%;
 }
 
+/* Ширина тексту */
 .note > p,
 .note > ul,
 .note > ol,
@@ -264,7 +265,7 @@ main {
 .note > h4,
 .note > table {
   width: 100%;
-  max-width: 50rem;
+  max-width: 56rem;
 }
 
 .note b,
@@ -291,7 +292,7 @@ main {
    ================================================================ */
 
 .note.swap {
-  max-width: 50rem;
+  max-width: 56rem;
   margin-top: -0.9rem;
   padding-left: 0.8rem;
   border-left: 2px solid var(--line);
@@ -521,6 +522,10 @@ main pre:has(> code[class*="language-vega-lite"]) {
     padding: 0 1.25rem;
   }
 
+  /* ВАЖЛИВО:
+     тут також 56rem, тому текст більше
+     не звужується назад до 38rem */
+
   .note > p,
   .note > ul,
   .note > ol,
@@ -529,8 +534,15 @@ main pre:has(> code[class*="language-vega-lite"]) {
   .note > h3,
   .note > h4,
   .note > table {
-    max-width: 38rem;
+    width: 100%;
+    max-width: 56rem;
   }
+
+  .note.swap {
+    max-width: 56rem;
+  }
+
+  /* Розміри dashboard для середніх екранів */
 
   .work.wide:nth-of-type(1) .note > .chart {
     width: calc(100% + 8rem);
@@ -612,6 +624,8 @@ main pre:has(> code[class*="language-vega-lite"]) {
     padding: 2rem 0;
   }
 
+  /* На телефоні текст використовує всю доступну ширину */
+
   .note > p,
   .note > ul,
   .note > ol,
@@ -620,8 +634,15 @@ main pre:has(> code[class*="language-vega-lite"]) {
   .note > h3,
   .note > h4,
   .note > table {
+    width: 100%;
     max-width: 100%;
   }
+
+  .note.swap {
+    max-width: 100%;
+  }
+
+  /* На телефоні всі Tableau вміщуються в екран */
 
   .work.wide:nth-of-type(1) .note > .chart,
   .work.wide:nth-of-type(2) .note > .chart,
