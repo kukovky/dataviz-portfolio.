@@ -333,7 +333,7 @@ main {
 .work.wide:nth-of-type(1) .note > .chart {
   width: calc(100% + 22rem);
   max-width: none;
-  margin-left: -5rem;
+  margin-left: -1rem;
 }
 
 /* 2. Цунаде: ціна життя */
