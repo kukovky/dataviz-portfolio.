@@ -332,7 +332,7 @@ main {
 
 /* 1. Економіка Конохи */
 .work.wide:nth-of-type(1) .note > .chart {
-  width: calc(100% + 23rem);
+  width: calc(100% + 21rem);
   max-width: none;
 }
 
